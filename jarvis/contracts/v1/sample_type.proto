@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package jarvis.contracts.v1;
+
+option go_package = "github.com/JorritSalverda/jarvis-contracts-golang/contracts/v1";
+
+// The type of the sample.
+enum SampleType {
+  SAMPLE_TYPE_INVALID = 0;
+  SAMPLE_TYPE_ELECTRICITY = 1;
+  SAMPLE_TYPE_GAS = 2;
+  SAMPLE_TYPE_TEMPERATURE = 3;
+  SAMPLE_TYPE_PRESSURE = 4;
+  SAMPLE_TYPE_FLOW = 5;
+  SAMPLE_TYPE_HUMIDITY = 6;
+  SAMPLE_TYPE_TIME = 7;
+}
