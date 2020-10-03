@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package jarvis.contracts.v1;
+
+option go_package = "github.com/JorritSalverda/jarvis-contracts-golang/contracts/v1";
+
+import "jarvis/contracts/v1/reading_type.proto";
+import "jarvis/contracts/v1/unit_type.proto";
+
+message Reading {
+  string name = 1;
+  string display_name = 2;
+  double value = 3;
+  ReadingType reading_type = 4;
+  UnitType unit_type = 5;
+}
+

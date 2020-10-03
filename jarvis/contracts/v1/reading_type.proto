@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package jarvis.contracts.v1;
+
+option go_package = "github.com/JorritSalverda/jarvis-contracts-golang/contracts/v1";
+
+enum ReadingType {
+  ELECTRICITY = 0;
+  GAS = 1;
+  TEMPERATURE = 2;
+  PRESSURE = 3;
+  FLOW = 4;
+  HUMIDITY = 5;
+}

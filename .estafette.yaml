@@ -1,0 +1,82 @@
+labels:
+  app-group: jarvis
+  language: proto
+
+version:
+  semver:
+    major: 0
+    minor: 0
+
+stages:
+  git-clone:
+    image: extensions/git-clone:stable
+    shallow: false
+
+  prototool-lint:
+    image: uber/prototool:1.10.0
+    commands:
+    - prototool lint
+
+  prototool-compile:
+    image: uber/prototool:1.10.0
+    commands:
+    - prototool compile
+
+  prototool-break-check:
+    image: uber/prototool:1.10.0
+    commands:
+    - git branch --track main origin/main || true
+    - prototool break check --git-branch main
+
+  clone-language-repos:
+    parallelStages:
+      clone-golang:
+        image: extensions/git-clone:stable
+        repo: jarvis-contracts-golang
+        branch: main
+        subdir: generated/golang/github.com/estafette/jarvis-contracts-golang
+
+  remove-previous-generated-files:
+    image: uber/prototool:1.10.0
+    shell: /bin/bash
+    commands:
+    - shopt -s extglob
+    - shopt -u dotglob
+    - rm -rfv generated/golang/github.com/estafette/jarvis-contracts-golang/!(".git")
+
+  copy-source-files:
+    image: uber/prototool:1.10.0
+    shell: /bin/bash
+    commands:
+    - shopt -u dotglob
+    - cp -rv source/golang/. generated/golang/github.com/estafette/jarvis-contracts-golang
+
+  prototool-generate:
+    image: uber/prototool:1.10.0
+    commands:
+    - prototool generate
+
+  compile-language-repos:
+    parallelStages:
+      compile-golang:
+        image: golang:1.15.2-alpine3.12
+        commands:
+        - cd generated/golang/github.com/estafette/jarvis-contracts-golang
+        - go test ./...
+
+  git-push-and-tag-language-repos:
+    when:
+      status == 'succeeded' && 
+      branch == 'main'
+    parallelStages:
+      git-push-and-tag-golang:
+        image: uber/prototool:1.10.0
+        commands:
+        - cd generated/golang/github.com/estafette/jarvis-contracts-golang
+        - git config --global user.email "jarvis-contracts-bot@jorritsalverda.com"
+        - git config --global user.name "jarvis-contracts-bot"
+        - git add --all
+        - git commit --allow-empty -m "v${ESTAFETTE_BUILD_VERSION}"
+        - git push origin main
+        - git tag --force v${ESTAFETTE_BUILD_VERSION}
+        - git push --force origin v${ESTAFETTE_BUILD_VERSION}

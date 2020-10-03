@@ -1,0 +1,36 @@
+protoc:
+  version: 3.11.1
+
+lint:
+  group: uber2
+  rules:
+    remove:
+    - FILE_OPTIONS_EQUAL_GO_PACKAGE_V2_SUFFIX
+    - FILE_OPTIONS_REQUIRE_OBJC_CLASS_PREFIX
+    - MESSAGES_HAVE_SENTENCE_COMMENTS_EXCEPT_REQUEST_RESPONSE_TYPES
+    - FILE_OPTIONS_REQUIRE_JAVA_OUTER_CLASSNAME
+    - FILE_OPTIONS_REQUIRE_PHP_NAMESPACE
+
+generate:
+  go_options:
+    import_path: github.com/estafette/estafette/ci-protos-proto
+  plugins:
+  - name: go
+    flags: plugins=grpc
+    output: ./generated/golang
+  - name: java
+    output: ./generated/java/src/main/java
+  - name: csharp
+    output: ./generated/csharp/src
+    flags: base_namespace=Estafette.Ci
+  - name: python
+    output: ./generated/python
+  - name: cpp
+    output: ./generated/cpp
+  - name: ruby
+    output: ./generated/ruby
+  - name: objc
+    output: ./generated/objc
+  - name: js
+    output: ./generated/js
+    flags: library=estafette_ci.js,binary

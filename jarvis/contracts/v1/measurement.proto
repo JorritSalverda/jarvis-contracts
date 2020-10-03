@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package jarvis.contracts.v1;
+
+option go_package = "github.com/JorritSalverda/jarvis-contracts-golang/contracts/v1";
+
+import "jarvis/contracts/v1/reading.proto";
+import "google/protobuf/timestamp.proto";
+
+message Measurement {
+  string source = 1;
+  repeated Reading readings = 2;
+  google.protobuf.Timestamp measured_at = 3;
+}
+

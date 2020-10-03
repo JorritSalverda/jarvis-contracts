@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package jarvis.contracts.v1;
+
+option go_package = "github.com/JorritSalverda/jarvis-contracts-golang/contracts/v1";
+
+enum UnitType {
+  WATT = 0;
+  WATT_PER_SECOND = 1;
+  LITER = 2;
+  LITER_PER_SECOND = 3;
+  DEGREE_CELCIUS = 5;
+  PASCAL = 6;
+  RATIO = 7;
+}
