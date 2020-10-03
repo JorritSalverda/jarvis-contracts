@@ -13,7 +13,7 @@ prototool generate
 echo -e "\nCopying resources to generated stubs directories..."
 cp -rv source/cpp/. generated/cpp
 cp -rv source/csharp/. generated/csharp
-cp -rv source/golang/. generated/golang/github.com/estafette/estafette-ci-protos-golang
+cp -rv source/golang/. generated/golang/github.com/JorritSalverda/jarvis-contracts-golang
 cp -rv source/java/. generated/java
 cp -rv source/js/. generated/js
 cp -rv source/objc/. generated/objc

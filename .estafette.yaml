@@ -34,7 +34,7 @@ stages:
         image: extensions/git-clone:stable
         repo: jarvis-contracts-golang
         branch: main
-        subdir: generated/golang/github.com/estafette/jarvis-contracts-golang
+        subdir: generated/golang/github.com/JorritSalverda/jarvis-contracts-golang
 
   remove-previous-generated-files:
     image: uber/prototool:1.10.0
@@ -42,14 +42,14 @@ stages:
     commands:
     - shopt -s extglob
     - shopt -u dotglob
-    - rm -rfv generated/golang/github.com/estafette/jarvis-contracts-golang/!(".git")
+    - rm -rfv generated/golang/github.com/JorritSalverda/jarvis-contracts-golang/!(".git")
 
   copy-source-files:
     image: uber/prototool:1.10.0
     shell: /bin/bash
     commands:
     - shopt -u dotglob
-    - cp -rv source/golang/. generated/golang/github.com/estafette/jarvis-contracts-golang
+    - cp -rv source/golang/. generated/golang/github.com/JorritSalverda/jarvis-contracts-golang
 
   prototool-generate:
     image: uber/prototool:1.10.0
@@ -61,7 +61,7 @@ stages:
       compile-golang:
         image: golang:1.15.2-alpine3.12
         commands:
-        - cd generated/golang/github.com/estafette/jarvis-contracts-golang
+        - cd generated/golang/github.com/JorritSalverda/jarvis-contracts-golang
         - go test ./...
 
   git-push-and-tag-language-repos:
@@ -72,7 +72,7 @@ stages:
       git-push-and-tag-golang:
         image: uber/prototool:1.10.0
         commands:
-        - cd generated/golang/github.com/estafette/jarvis-contracts-golang
+        - cd generated/golang/github.com/JorritSalverda/jarvis-contracts-golang
         - git config --global user.email "jarvis-contracts-bot@jorritsalverda.com"
         - git config --global user.name "jarvis-contracts-bot"
         - git add --all

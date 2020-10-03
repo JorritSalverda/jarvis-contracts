@@ -1,6 +1,6 @@
-# ESTAFETTE-CI-PROTOS
+# JARVIS-CONTRACTS
 
-This mono-repository contains all messages used by the Estafette CI platform in proto3 format.
+This mono-repository contains all messages used by the Jarvis platform in proto3 format.
 
 ## Adding or extending messages
 
@@ -19,7 +19,7 @@ and after making any changes in your branch run
 ```bash
 prototool lint
 prototool compile
-prototool break check --git-branch master
+prototool break check --git-branch main
 prototool generate
 ```
 
@@ -33,15 +33,8 @@ prototool format -w
 
 ## Automatically generated stubs
 
-Once a PR is merged to the `master` branch files for the following languages will be generated and tagged with the same version as this build.
+Once a PR is merged to the `main` branch files for the following languages will be generated and tagged with the same version as this build.
 
 | Language    | Repository                                                                                                 |
 | ----------- | ---------------------------------------------------------------------------------------------------------- |
-| Golang      | [github.com/estafette/estafette-ci-protos-golang](https://github.com/estafette/estafette-ci-protos-golang) |
-| Java        | [github.com/estafette/estafette-ci-protos-java](https://github.com/estafette/estafette-ci-protos-java)     |
-| CSharp      | [github.com/estafette/estafette-ci-protos-csharp](https://github.com/estafette/estafette-ci-protos-csharp) |
-| Python      | [github.com/estafette/estafette-ci-protos-python](https://github.com/estafette/estafette-ci-protos-python) |
-| C++         | [github.com/estafette/estafette-ci-protos-cpp](https://github.com/estafette/estafette-ci-protos-cpp)       |
-| Ruby        | [github.com/estafette/estafette-ci-protos-ruby](https://github.com/estafette/estafette-ci-protos-ruby)     |
-| Objective-C | [github.com/estafette/estafette-ci-protos-objc](https://github.com/estafette/estafette-ci-protos-objc)     |
-| Javascript  | [github.com/estafette/estafette-ci-protos-js](https://github.com/estafette/estafette-ci-protos-js)         |
+| Golang      | [github.com/JorritSalverda/jarvis-contracts-golang](https://github.com/JorritSalverda/jarvis-contracts-golang) |

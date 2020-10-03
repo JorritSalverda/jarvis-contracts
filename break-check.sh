@@ -6,5 +6,5 @@ set -e
 
 echo -e "\nChecking for breaking changes..."
 git fetch origin
-git pull origin master
-prototool break check --git-branch master
+git pull origin main
+prototool break check --git-branch main

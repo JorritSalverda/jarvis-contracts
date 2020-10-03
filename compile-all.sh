@@ -21,7 +21,7 @@ cd ../..
 trap "cd ../../../../.." ERR
 
 echo -e "\nCompiling golang stubs and source code..."
-cd generated/golang/github.com/estafette/estafette-ci-protos-golang
+cd generated/golang/github.com/JorritSalverda/jarvis-contracts-golang
 go test ./...
 cd ../../../../..
 
