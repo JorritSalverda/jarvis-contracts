@@ -17,6 +17,6 @@ generate:
   go_options:
     import_path: github.com/JorritSalverda/jarvis-contracts
   plugins:
-  - name: gogo
+  - name: go
     flags: plugins=grpc
     output: ./generated/golang
