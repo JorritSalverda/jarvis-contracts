@@ -11,8 +11,8 @@ import "jarvis/contracts/v1/aggregation_level.proto";
 
 // A sample represents a single measured value with with a measurement; a measurement can have multiple samples.
 message Sample {
-  string name = 1;
-  string display_name = 2;
+  string device_name = 1;
+  string sample_name = 2;
   AggregationLevel aggregation_level = 3;
   MetricType metric_type = 4;
   double value = 5;
