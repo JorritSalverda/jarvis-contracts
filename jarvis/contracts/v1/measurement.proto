@@ -10,7 +10,8 @@ import "google/protobuf/timestamp.proto";
 // A measurements is a range of samples read at the same time from the same source.
 message Measurement {
   string source = 1;
-  repeated Sample samples = 2;
-  google.protobuf.Timestamp measured_at_time = 3;
+  string location = 2;
+  repeated Sample samples = 3;
+  google.protobuf.Timestamp measured_at_time = 4;
 }
 
