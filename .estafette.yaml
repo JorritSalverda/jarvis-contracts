@@ -23,6 +23,7 @@ stages:
     - prototool compile
 
   prototool-break-check:
+    when: status == 'succeeded' && branch != 'main'
     image: uber/prototool:1.10.0
     commands:
     - git branch --track main origin/main || true
