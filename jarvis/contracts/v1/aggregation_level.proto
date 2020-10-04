@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package jarvis.contracts.v1;
+
+option go_package = "github.com/JorritSalverda/jarvis-contracts-golang/contracts/v1";
+
+// At what level of aggregation is the sample recorded.
+enum AggregationLevel {
+  AGGREGATION_LEVEL_INVALID = 0;
+  AGGREGATION_LEVEL_METER = 1;
+  AGGREGATION_LEVEL_GROUP = 2;
+  AGGREGATION_LEVEL_DEVICE = 3;
+  AGGREGATION_LEVEL_DEVICE_SUB = 4;
+}

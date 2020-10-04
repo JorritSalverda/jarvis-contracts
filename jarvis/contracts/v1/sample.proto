@@ -6,13 +6,17 @@ option go_package = "github.com/JorritSalverda/jarvis-contracts-golang/contracts
 
 import "jarvis/contracts/v1/sample_type.proto";
 import "jarvis/contracts/v1/sample_unit.proto";
+import "jarvis/contracts/v1/metric_type.proto";
+import "jarvis/contracts/v1/aggregation_level.proto";
 
 // A sample represents a single measured value with with a measurement; a measurement can have multiple samples.
 message Sample {
   string name = 1;
   string display_name = 2;
-  double value = 3;
-  SampleType sample_type = 4;
-  SampleUnit sample_unit = 5;
+  AggregationLevel aggregation_level = 3;
+  MetricType metric_type = 4;
+  double value = 5;
+  SampleType sample_type = 6;
+  SampleUnit sample_unit = 7;
 }
 

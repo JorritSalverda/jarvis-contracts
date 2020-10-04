@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package jarvis.contracts.v1;
+
+option go_package = "github.com/JorritSalverda/jarvis-contracts-golang/contracts/v1";
+
+// The type of metric.
+enum MetricType {
+  METRIC_TYPE_INVALID = 0;
+  METRIC_TYPE_COUNTER = 1;
+  METRIC_TYPE_GAUGE = 2;
+}
