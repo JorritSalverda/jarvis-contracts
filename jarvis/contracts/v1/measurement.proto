@@ -5,13 +5,13 @@ package jarvis.contracts.v1;
 option go_package = "github.com/JorritSalverda/jarvis-contracts-golang/contracts/v1";
 
 import "jarvis/contracts/v1/sample.proto";
-import "gogo/protobuf/timestamp.proto";
+import "google/protobuf/timestamp.proto";
 
 // A measurements is a range of samples read at the same time from the same source.
 message Measurement {
   string source = 1;
   string location = 2;
   repeated Sample samples = 3;
-  gogo.protobuf.Timestamp measured_at_time = 4;
+  google.protobuf.Timestamp measured_at_time = 4;
 }
 
