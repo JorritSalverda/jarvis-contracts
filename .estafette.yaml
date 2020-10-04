@@ -55,7 +55,6 @@ stages:
   prototool-generate:
     image: estafette/prototool:0.0.7
     commands:
-    - go get github.com/golang/protobuf/protoc-gen-go
     - prototool generate
 
   compile-language-repos:
