@@ -13,18 +13,18 @@ stages:
     shallow: false
 
   prototool-lint:
-    image: uber/prototool:1.10.0
+    image: estafette/prototool:0.0.7
     commands:
     - prototool lint
 
   prototool-compile:
-    image: uber/prototool:1.10.0
+    image: estafette/prototool:0.0.7
     commands:
     - prototool compile
 
   prototool-break-check:
     when: status == 'succeeded' && branch != 'main'
-    image: uber/prototool:1.10.0
+    image: estafette/prototool:0.0.7
     commands:
     - git branch --track main origin/main || true
     - prototool break check --git-branch main
@@ -38,7 +38,7 @@ stages:
         subdir: generated/golang/github.com/JorritSalverda/jarvis-contracts-golang
 
   remove-previous-generated-files:
-    image: uber/prototool:1.10.0
+    image: estafette/prototool:0.0.7
     shell: /bin/bash
     commands:
     - shopt -s extglob
@@ -46,14 +46,14 @@ stages:
     - rm -rfv generated/golang/github.com/JorritSalverda/jarvis-contracts-golang/!(".git")
 
   copy-source-files:
-    image: uber/prototool:1.10.0
+    image: estafette/prototool:0.0.7
     shell: /bin/bash
     commands:
     - shopt -u dotglob
     - cp -rv source/golang/. generated/golang/github.com/JorritSalverda/jarvis-contracts-golang
 
   prototool-generate:
-    image: uber/prototool:1.10.0
+    image: estafette/prototool:0.0.7
     commands:
     - go get github.com/golang/protobuf/protoc-gen-go
     - prototool generate
@@ -72,7 +72,7 @@ stages:
       branch == 'main'
     parallelStages:
       git-push-and-tag-golang:
-        image: uber/prototool:1.10.0
+        image: estafette/prototool:0.0.7
         commands:
         - cd generated/golang/github.com/JorritSalverda/jarvis-contracts-golang
         - git config --global user.email "jarvis-contracts-bot@jorritsalverda.com"

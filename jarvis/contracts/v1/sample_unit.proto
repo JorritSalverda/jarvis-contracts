@@ -7,8 +7,8 @@ option go_package = "github.com/JorritSalverda/jarvis-contracts-golang/contracts
 // The unit of the sample.
 enum SampleUnit {
   SAMPLE_UNIT_INVALID = 0;
-  SAMPLE_UNIT_WATT = 1;
-  SAMPLE_UNIT_WATT_SECOND = 2;
+  SAMPLE_UNIT_JOULE = 1;
+  SAMPLE_UNIT_JOULE_PER_SECOND = 2;
   SAMPLE_UNIT_LITER = 3;
   SAMPLE_UNIT_LITER_PER_SECOND = 4;
   SAMPLE_UNIT_DEGREE_CELCIUS = 5;
